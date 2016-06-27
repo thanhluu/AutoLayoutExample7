@@ -31,14 +31,23 @@ class ViewController: UIViewController {
         view.addSubview(purpleView)
         
         let views: [String: AnyObject] = [
-            "orangeView": orangeView
+            "orangeView": orangeView,
+            "blueView": blueView,
+            "purpleView": purpleView,
+            "topLayoutGuide": self.topLayoutGuide
         ]
         
         let metrics: [String: AnyObject] = [
-            "orangeViewWidth": 200
+            "orangeViewWidth": 200,
+            "orangeViewHeight": 57,
+            "standardOffset": 8,
+            "bottomSpaceOffset": 50
         ]
         
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[orangeView(orangeViewWidth)]", options: [], metrics: metrics, views: views))
+        orangeView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
+        
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[topLayoutGuide]-standardOffset-[purpleView]-standardOffset-[orangeView(orangeViewHeight)]-bottomSpaceOffset-|", options: [], metrics: metrics, views: views))
     }
 
     override func didReceiveMemoryWarning() {
