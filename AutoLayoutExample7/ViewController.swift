@@ -45,9 +45,13 @@ class ViewController: UIViewController {
         ]
         
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[orangeView(orangeViewWidth)]", options: [], metrics: metrics, views: views))
-        orangeView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor)
+        orangeView.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor).active = true
         
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[topLayoutGuide]-standardOffset-[purpleView]-standardOffset-[orangeView(orangeViewHeight)]-bottomSpaceOffset-|", options: [], metrics: metrics, views: views))
+        
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[topLayoutGuide]-standardOffset-[blueView]-standardOffset-[orangeView(orangeViewHeight)]-bottomSpaceOffset-|", options: [], metrics: metrics, views: views))
+        
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-standardOffset-[purpleView(==blueView)]-standardOffset-[blueView]-standardOffset-|", options: [], metrics: metrics, views: views))
     }
 
     override func didReceiveMemoryWarning() {
